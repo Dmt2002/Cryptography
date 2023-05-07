@@ -1,45 +1,51 @@
-encryptionMatrix = []
-decryptionMatrix = []
+def encrypt(plaintext):
+    plaintext = plaintext.upper().replace(" ", "")  # Remove spaces and convert to uppercase
+    plaintext += "_" * (9 - (len(plaintext) % 9))  # Pad the text with _ to make it a multiple of 9
+    matrix = [list(plaintext[i:i+3]) for i in range(0, len(plaintext), 3)]  # Create a matrix
+    transpose_matrix = [list(row) for row in zip(*matrix)]  # Transpose the matrix
+    ciphertext = "".join([element for row in transpose_matrix for element in row])  # Flatten the matrix
+    return ciphertext
 
-def function(str, mat, lp):
 
-for i in range(len(str)):
-if i % lp == 0:
-sub = str[i:i + lp]
+def decrypt(ciphertext):
+    ciphertext = ciphertext.upper().replace(" ", "")  # Remove spaces and convert to uppercase
+    matrix = [list(ciphertext[i:i+3]) for i in range(0, len(ciphertext), 3)]  # Create a matrix
+    transpose_matrix = [list(row) for row in zip(*matrix)]  # Transpose the matrix
+    plaintext = "".join([element for row in transpose_matrix for element in row])  # Flatten the matrix
+    plaintext = plaintext.replace("_", "")  # Remove padding _ characters
+    return plaintext
 
-lst = []
-for j in sub:
-lst.append(j)
-mat.append(lst)
-print(&#39; &#39;.join(lst))
 
-def cypherText(matrix):
-text = []
-for i in range(len(matrix)):
-for j in range(len(matrix[i])):
-text.append(matrix[j][i])
+# Take user input
+plaintext = input("Enter the text to be encrypted: ")
 
-return text
+# Encrypt the input text
+ciphertext = encrypt(plaintext)
 
-if __name__ == &#39;__main__&#39;:
-text = str(input(&quot;Enter the text : &quot;))
-newText = text.replace(&quot; &quot;, &quot;&quot;)
-print(&quot;\n ************ Encryption *************\n newText&quot;)
-num = int(len(newText))
-function(newText, encryptionMatrix, 3)
-eT = cypherText(encryptionMatrix)
-print(eT)
-encryptedText = &quot;&quot;
+# Display the input and output as 3x3 matrices
+print("Input:")
+for row in [list(plaintext[i:i+3]) for i in range(0, len(plaintext), 3)]:
+    print(row)
+print(f"Input = {plaintext}")
+    
+print("Output:")
+for row in [list(ciphertext[i:i+3]) for i in range(0, len(ciphertext), 3)]:
+    print(row)
+print(f"Ciphertext = {ciphertext}")
 
-encryptedText = encryptedText.join(eT)
-print(encryptedText)
+# Take user input for decryption
+ciphertext = input("Enter the ciphertext to be decrypted: ")
 
-print(&quot;\n\n************ Decryption *************\n&quot;)
+# Decrypt the input text
+plaintext = decrypt(ciphertext)
 
-function(encryptedText, decryptionMatrix, 3)
-dT = cypherText(decryptionMatrix)
-print(dT)
+# Display the input and output as 3x3 matrices
+print("Input:")
+for row in [list(ciphertext[i:i+3]) for i in range(0, len(ciphertext), 3)]:
+    print(row)
+print(f"Ciphertext = {ciphertext}")
 
-decryptedText = &quot;&quot;
-decryptedText = decryptedText.join(dT)
-print(decryptedText)
+print("Output:")
+for row in [list(plaintext[i:i+3]) for i in range(0, len(plaintext), 3)]:
+    print(row)
+print(f"Plaintext = {plaintext}")
