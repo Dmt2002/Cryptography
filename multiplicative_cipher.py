@@ -12,10 +12,12 @@ def multiplicative_decrypt(ciphertext, key):
     plaintext = ""
     # Finding the multiplicative inverse of the key
     inverse_key = 0
-    for i in range(26):
+    for i in range(1, 26):
         if (i * key) % 26 == 1:
             inverse_key = i
             break
+    else:
+        return "Error: The key and 26 are not coprime."
     
     for letter in ciphertext:
         if letter.isalpha():
@@ -24,6 +26,7 @@ def multiplicative_decrypt(ciphertext, key):
         else:
             plaintext += letter
     return plaintext
+
 
 # Example usage
 plaintext = input("Enter the plaintext: ")
