@@ -1,0 +1,14 @@
+ping 8.8.8.8
+The "ping 8.8.8.8" command is used to test the connectivity between your computer and the Google public DNS server at IP address 8.8.8.8. It sends packets of data to the server and measures the response time, helping to diagnose any network issues.
+
+tracert google.com
+The "tracert google.com" command is used to trace the network path taken by data packets from your computer to the Google website. It shows the number of hops, or intermediate nodes, the packets pass through, and the response time at each hop. This can help diagnose network problems or identify areas of high latency.
+
+whois tcetmumbai.in
+The "whois tcetmumbai.in" command is used to retrieve the registration details of the domain name "tcetmumbai.in" from the domain registrar's database. It displays information such as the name and contact details of the domain owner, the registration and expiration dates, and the domain's name server information. This command is useful for verifying domain ownership or troubleshooting domain-related issues.
+
+nslookup google.com
+The "nslookup google.com" command is used to query the DNS (Domain Name System) server for the IP address associated with the domain name "google.com". It returns the IP address of the website, as well as other DNS information such as the domain's authoritative name server. This command can help diagnose DNS-related issues and verify DNS record information.
+
+nmap -T4 -A -v nmap 192.168.92.1
+The "nmap -T4 -A -v nmap 192.168.92.1" command is used to perform a network scan of the IP address 192.168.92.1 with aggressive options. It uses the Nmap tool and sets the timing template to "T4" for faster scans, enables OS detection and service version detection using the "-A" option, and provides verbose output using "-v". This command can help identify open ports, services running on them, and potentially detect vulnerabilities in the scanned system.
